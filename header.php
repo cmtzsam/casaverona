@@ -27,7 +27,7 @@
 </a>
 
 <div class="main_wrap">
-	<header class="main_header">
+	<header class="main_header d-none">
 		<!-- TOP NAV AREA -->
 			<?php if ( has_nav_menu( 'header_top_nav' ) ) : ?>
 				<div class="header_top_nav border-bottom p-1">

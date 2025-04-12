@@ -1,0 +1,232 @@
+@use "_fonts";
+
+h2, h3, h4, h5, h6,
+p, a{
+  font-family: 'Neue Haas Unica', sans-serif;
+}
+
+
+.sec-title{
+  font-weight: normal;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  span{
+    display: inline-block;
+    border-bottom: 3px solid black;
+  }
+}
+
+.homePageBanner{
+  background-size: cover;
+  background-position: center 100%;
+  .container{
+    height: 100vh;
+    max-height: 800px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    @media( max-width: 560px ){
+      max-height: 400px;
+    }
+  }
+  
+  &--title{
+    text-align: center;
+    color: white;
+    font-family: 'Arboria';
+    font-weight: normal;
+    font-size: 70px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin: 0;
+    padding-bottom: 50px;
+    @media( max-width: 560px ){
+      font-size: 40px;
+      padding: 10px;
+    }    
+  }
+
+}
+
+
+.theCollectionsGrid{
+  padding: 80px 0;
+  @media( max-width: 560px ){
+    padding: 40px 0;
+  }
+
+  &--grid{
+    gap: 30px 0;
+    .offer-card{
+      border: 2px solid black;
+      &:hover{
+        .offer-card--img{
+          img{
+            transform: scale(1);
+          }
+        }
+      }
+      &--img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 330px;
+        cursor: pointer;
+        img{
+          display: block;
+          max-width: 100%;
+          transform: scale(.9);
+          transition: all .2s linear;
+        }
+      }
+
+      &--data{
+        .box-title{
+          text-align: center;
+          font-weight: normal;
+          text-transform: uppercase;
+          font-size: 24px;
+          &:hover{
+            a{
+              text-decoration: underline;
+            }
+          }
+          a{
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+.homePageCta{
+
+  background-size: cover;
+  background-position: 100%;
+  padding: 20px 0;
+
+  @media( max-width: 480px ){
+    padding-top: 40px;
+  }
+
+  .container{
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+  }
+
+  &--data{
+    color: white;
+    width: 100%;
+  }
+
+  &--title,
+  &--desc{
+    line-height: 1.25;
+    font-weight: 300;
+    @media( max-width: 480px ){
+      text-align: center;
+    }
+  }
+  &--title{
+    font-size: 50px;
+    margin: 0;
+    width: 100%;
+    max-width: 750px;    
+    @media( max-width: 480px ){
+      font-size: 35px;
+    }
+  }
+  &--desc{
+    padding-top: 20px;
+    p{
+      font-size: 30px;
+      margin: 0 0 0;
+      width: 100%;
+      max-width: 750px;      
+    }
+    &-links{
+      padding-top: 50px;
+      display: flex;
+      align-items: center;
+      @media( max-width: 480px ){
+        flex-flow: column;
+        justify-content: center;
+      }
+      .social{
+        margin-left: auto;
+        display: flex;
+        gap: 0 40px;
+        @media( max-width: 480px ){
+          margin: 20px auto;
+        }
+        a{
+          font-size: 50px;
+        }
+      }
+      a{
+        color: white;
+        &.boton{
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          font-weight: 500;
+          color: black;
+          background-color: white;
+          width: 100%;
+          max-width: 230px;
+          height: 60px;
+          text-decoration: none;
+          font-size: 30px;
+          font-family: 'Arboria';
+        }
+      }
+    }    
+  }
+
+
+}
+
+.homePageEndCollections{
+  .container{
+    max-width: 1920px;
+  }
+  .row{
+    gap: 20px 0;
+  }
+  a{
+    position: relative;
+    &:hover{
+      span{
+        opacity: 1;
+      }
+    }
+    span{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      font-size: 30px;
+      font-family: 'Arboria';
+      opacity: 0;
+      transition: all .2s linear;
+    }
+  }
+}
+
+
+footer{
+  display: none;
+}

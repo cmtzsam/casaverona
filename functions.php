@@ -138,3 +138,12 @@ add_filter( 'get_the_archive_title', 'starter_archive_title' );
  * @since starter 2.0
  */
 add_filter( 'use_widgets_block_editor', '__return_false' );
+
+
+// Bootstrap icons
+
+function codif_enqueue_styles()
+{
+	wp_enqueue_style('bootstrap-icons-css', get_template_directory_uri() . '/assets/css/bootstrap-icons.min.css', array(), '1.0', 'all');
+}
+add_action('wp_enqueue_scripts', 'codif_enqueue_styles');
