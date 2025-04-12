@@ -37,6 +37,9 @@ productCarousels.forEach( element => {
 const singleThumbCarousel = document.querySelector( '.js_singlepage_thumbnail_carousel .swiper' );
 if ( singleThumbCarousel ) {
 	const mainImgThumbnailCarousel = new Swiper( singleThumbCarousel, {
+		direction: 'vertical',
+		spaceBetween: 10,
+		watchSlidesProgress: true,
 		navigation: {
 			prevEl: '.js_singlepage_thumbnail_carousel .carousel_control_prev',
 			nextEl: '.js_singlepage_thumbnail_carousel .carousel_control_next'
