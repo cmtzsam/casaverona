@@ -1,0 +1,127 @@
+// common filter styles, indicator
+.filter_block {
+	margin-bottom: 30px;
+	&, .woocommerce-ordering select {
+		font-size: 12px;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+	.woocommerce-result-count, .woocommerce-notices-wrapper {display: none !important;}
+	.widget-title {
+		border-bottom: 1px solid $gray-400;
+		padding-bottom: 5px;
+		@include flex_align();
+		text-decoration: none;
+		.notifications_text {margin-left: 3px;}
+	}
+	.indicator_color {
+		border: 1px solid $gray-300;
+		border-radius: 100%;
+		display: inline-block;
+		height: 1.2em;
+		margin-right: 7px;
+		vertical-align: middle;
+		width: 1.2em;
+	}
+	.wrap_text {font-size: 12px;}
+}
+
+// woo filter list styles
+.woocommerce-widget-layered-nav-list {
+	list-style: none;
+	padding-left: 0;
+	a {text-decoration: none !important;}
+	.form-check-input {margin-top: 6px;}
+}
+.sidebar_list > li {margin-bottom: 20px;}
+
+// reset button
+.filtered .filter_reset_btn {display: block !important;}
+
+// price filter
+.product_filter_sort_ajax .price_filter_btn {display: none;}
+.widget_price_filter {
+	.price_slider_amount input {display: block !important;}
+	.price_label {display: none !important;}
+	.price_slider {
+		background-color: $gray-500;
+		height: 0.5em;
+		font-size: 10px;
+		margin: 15px 0.75em;
+		position: relative;
+	}
+	.ui-slider-range {
+		background-color: $black;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+	}
+	.ui-slider-handle {
+		background-color: $white;
+		border: 1px solid;
+		cursor: ew-resize;
+		height: 2em;
+		margin-left: -0.75em;
+		position: absolute;
+		top: -0.8em;
+		width: 1.5em;
+	}
+}
+
+// list, dropdown, collapse view mixins - used below for both desktop/moible
+@mixin filter_list() {
+	.widget-title  {
+		pointer-events: none;
+		svg {display: none;}
+		&[data-bs-toggle="collapse"] {display: none;}
+	}
+	.collapse {display: block;}
+	.dropdown-menu {
+		border: none;
+		display: block;
+		position: static;
+	}
+}
+@mixin filter_dropdown() {
+	.widget-title[data-bs-toggle="collapse"] {display: none;}
+	.collapse {display: block;}
+	.dropdown-menu {padding: 15px 15px 12px;}
+}
+@mixin filter_collapse() {
+	.widget-title[data-bs-toggle="dropdown"] {display: none;}
+	.dropdown-menu {
+		border: none;
+		display: block;
+		padding: 0;
+		position: static;
+	}
+}
+
+// responsive
+@include media-breakpoint-up(md) {
+	.filter_desktop_list {@include filter_list();}
+	.filter_desktop_dropdown {@include filter_dropdown();}
+	.filter_desktop_collapse {@include filter_collapse();}
+	.mobile_filters_btn {display: none !important;}
+	/* reset offcanvas css for desktop */
+	.all_filters {
+		background: none;
+		border: none;
+		position: static;
+		transform: none !important;
+		visibility: visible !important;
+		width: auto;
+		.offcanvas-body {
+			overflow: initial;
+			padding: 0;
+		}
+	}
+	/* END reset offcanvas css for desktop */
+}
+@include media-breakpoint-down(md) {
+	.filter_mobile_list {@include filter_list();}
+	.filter_mobile_dropdown {@include filter_dropdown();}
+	.filter_mobile_collapse {@include filter_collapse();}
+	.mobile_filters_btn {@include flex_align(center, center, nowrap);}
+	.all_filters {margin-bottom: 0;}
+}

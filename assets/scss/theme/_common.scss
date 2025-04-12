@@ -1,0 +1,28 @@
+img {width: auto;} // fix to make sizes attribute workable
+svg {
+	fill: currentColor;
+	font-size: inherit;
+	pointer-events: none;
+}
+a:hover {text-decoration: none;}
+
+// title with side-lines
+.title_section {
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	span {
+		background: $white;
+		padding: 0 32px;
+		position: relative;
+	}
+	&::before {
+		background: $gray-400;
+		content: '';
+		height: 1px;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 50%;
+	}
+}

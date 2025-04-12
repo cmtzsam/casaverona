@@ -1,0 +1,127 @@
+// reset column for woo classes
+.u-column1.col-1, .u-column2.col-2, .woocommerce-checkout .col-1, .woocommerce-checkout .col-2 {width: 100%;}
+
+// style headings
+.entry-title {
+	margin: 2% 0 4%;
+	text-align: center;
+}
+
+// login
+#customer_login h2 {
+	margin-bottom: 50px;
+	text-align: center;
+	text-transform: uppercase;
+}
+.woocommerce-form-login {margin-bottom: 120px;}
+#customer_login {
+	@include media-breakpoint-up(sm) {
+		display: grid;
+		grid-gap: 30px;
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+// shop table - cart, checkout
+.shop_table {
+	width: 100%;
+	tbody tr {border-top: 1px solid #eee;}
+	th, td {padding: 0.3em;}
+}
+
+// cart page
+.shop_table_responsive {
+	.product-remove a {
+		font-size: 2em;
+		text-decoration: none;
+	}
+	.product-thumbnail img {
+		display: block;
+		height: auto;
+		max-width: 120px;
+	}
+	.quantity {
+		display: inline-block;
+		width: 80px;
+	}
+	.coupon {
+		display: flex;
+		[for="coupon_code"] {display: none;}
+		.button {width: 250px;}
+	}
+	@include media-breakpoint-up(md) {
+		.coupon {float: left;}
+		[name="update_cart"] {float: right;}
+	}
+	@include media-breakpoint-down(md) {
+		thead, th {display: none;}
+		tr, td {display: block;}
+		tr {margin: 0 0 30px;}
+		td::before {
+			content: attr(data-title) ": ";
+			font-weight: 700;
+		}
+		td.product-thumbnail::before, td.product-remove::before, td.actions:before {content: '';}
+		[name="update_cart"] {
+			margin-top: 10px;
+			width: 100%;
+		}
+	}
+}
+.cart-collaterals {
+	margin-top: 40px;
+	@include media-breakpoint-up(md) {
+		margin-left: auto;
+		width: 40%;
+	}
+}
+
+// checkout
+.woocommerce-checkout {
+	margin-top: 25px;
+	&:after {
+		clear: both;
+		content: '';
+		display: table;
+	}
+}
+@include media-breakpoint-up(md) {
+	#customer_details, #order_review_heading, #order_review {width: 50%;}
+	#order_review_heading, #order_review {
+		float: right;
+		padding-left: 25px;
+	}
+	#customer_details {
+		float: left;
+		padding-right: 25px;
+	}
+}
+.wc_payment_methods {
+	list-style: none;
+	padding-top: 25px;
+}
+
+// account - logged users
+.woocommerce-MyAccount-navigation ul {
+	font-size: 17px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: right;
+	li {margin-bottom: 15px;}
+}
+@include media-breakpoint-up(md) {
+	.woocommerce-MyAccount-navigation {
+		float: left;
+		width: 20%;
+	}
+	.woocommerce-MyAccount-content {
+		margin-left: 20%;
+		padding-left: 40px;
+	}
+	.u-columns.woocommerce-Addresses {
+		display: grid;
+		grid-gap: 30px;
+		grid-template-columns: 1fr 1fr;
+	}
+}

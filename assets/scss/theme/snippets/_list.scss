@@ -1,0 +1,14 @@
+.list, .menu_nested_list > .sub-menu, ul.page-numbers {
+	@include flex_align(flex-start);
+	margin-bottom: 0;
+	padding: 0;
+	> li {
+		@include flex_align(flex-start, center, nowrap);
+		flex-shrink: 0;
+		&::after {
+			content: ' ';
+			margin: 0 10px;
+		}
+		&:last-child::after {display: none!important;}
+	}
+}
