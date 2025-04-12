@@ -630,33 +630,40 @@ const wooAjaxFilter = ( currentLink, pushToHistory = true ) => {
 
 	archivePage.classList.add( 'main_loading' );
 	filterWrapBody.classList.add( 'main_loading' );
-	if ( pushToHistory ) {
-		history.pushState( null, null, currentLink );
+
+	try {
+		const urlObj = new URL(currentLink, window.location.origin);
+		const relativeUrl = urlObj.pathname + urlObj.search + urlObj.hash;
+
+		if (pushToHistory) {
+			history.pushState(null, '', relativeUrl);
+		}
+
+		fetch(relativeUrl)
+			.then(response => response.text())
+			.then(body => {
+				archivePage.classList.remove('main_loading');
+				filterWrapBody.classList.remove('main_loading');
+
+				const tempContainerData = document.createElement('div');
+				tempContainerData.innerHTML = body;
+
+				archivePage.innerHTML = tempContainerData.querySelector('.js_wrap_archive').innerHTML;
+				document.querySelector('title').innerHTML = tempContainerData.querySelector('title').innerHTML;
+
+				hideFiltersOnDesktop();
+				checkIfFiltered();
+				setCountSelectedFilter();
+				markSelectedFilter();
+				yoastUpdate(tempContainerData);
+				googleAnalyticsUpdate(tempContainerData);
+				ajaxTriggers();
+			});
+
+	} catch (err) {
+		console.error('URL malformada:', currentLink, err);
 	}
-	fetch( currentLink )
-		.then( response => response.text() )
-		.then( body => {
-			archivePage.classList.remove( 'main_loading' );
-			filterWrapBody.classList.remove( 'main_loading' );
-	
-			// insert archive main data
-			const tempContainerData = document.createElement( 'div' );
-			tempContainerData.innerHTML = body;
-			archivePage.innerHTML = tempContainerData.querySelector( '.js_wrap_archive' ).innerHTML;
-
-			// insert title
-			document.querySelector( 'title' ).innerHTML = tempContainerData.querySelector( 'title' ).innerHTML;
-
-			// run all functions
-			hideFiltersOnDesktop();
-			checkIfFiltered();
-			setCountSelectedFilter();
-			markSelectedFilter();
-			yoastUpdate( tempContainerData );
-			googleAnalyticsUpdate( tempContainerData );
-			ajaxTriggers();
-		} );
-}
+};
 window.addEventListener( 'popstate', () => {
 	wooAjaxFilter( location.href, false );
 });

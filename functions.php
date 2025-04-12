@@ -147,3 +147,14 @@ function codif_enqueue_styles()
 	wp_enqueue_style('bootstrap-icons-css', get_template_directory_uri() . '/assets/css/bootstrap-icons.min.css', array(), '1.0', 'all');
 }
 add_action('wp_enqueue_scripts', 'codif_enqueue_styles');
+
+
+// Corregir sidebar filters
+add_action( 'wp_enqueue_scripts', function () {
+	if ( is_shop() || is_product_category() || is_product_tag() ) {
+		wp_enqueue_script( 'wc-price-slider' );
+		wp_enqueue_script( 'jquery-ui-slider' );
+	}
+}, 20 );
+wp_enqueue_style( 'jquery-ui-style', 'https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css' );
+
